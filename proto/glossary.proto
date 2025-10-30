@@ -1,0 +1,52 @@
+syntax = "proto3";
+
+package glossary;
+
+import "google/protobuf/empty.proto";
+
+message Term {
+  int32 id = 1;
+  string keyword = 2;
+  string definition = 3;
+  string source = 4;
+  string created_at = 5; // ISO timestamp as string
+  string updated_at = 6; // ISO timestamp as string (or empty)
+}
+
+message TermList {
+  repeated Term terms = 1;
+}
+
+message GetByKeywordRequest {
+  string keyword = 1;
+}
+
+message GetByIdRequest {
+  int32 id = 1;
+}
+
+message CreateTermRequest {
+  string keyword = 1;
+  string definition = 2;
+  string source = 3;
+}
+
+message UpdateTermRequest {
+  int32 id = 1;
+  string keyword = 2;
+  string definition = 3;
+  string source = 4;
+}
+
+message DeleteTermRequest {
+  int32 id = 1;
+}
+
+service Glossary {
+  rpc ListTerms(google.protobuf.Empty) returns (TermList);
+  rpc GetTermByKeyword(GetByKeywordRequest) returns (Term);
+  rpc GetTermById(GetByIdRequest) returns (Term);
+  rpc CreateTerm(CreateTermRequest) returns (Term);
+  rpc UpdateTerm(UpdateTermRequest) returns (Term);
+  rpc DeleteTerm(DeleteTermRequest) returns (google.protobuf.Empty);
+}
