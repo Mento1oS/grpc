@@ -3,8 +3,8 @@
 import grpc
 import warnings
 
-import glossary_pb2 as glossary__pb2
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
+from proto import glossary_pb2 as proto_dot_glossary__pb2
 
 GRPC_GENERATED_VERSION = '1.76.0'
 GRPC_VERSION = grpc.__version__
@@ -19,7 +19,7 @@ except ImportError:
 if _version_not_supported:
     raise RuntimeError(
         f'The grpc package installed is at version {GRPC_VERSION},'
-        + ' but the generated code in glossary_pb2_grpc.py depends on'
+        + ' but the generated code in proto/glossary_pb2_grpc.py depends on'
         + f' grpcio>={GRPC_GENERATED_VERSION}.'
         + f' Please upgrade your grpc module to grpcio>={GRPC_GENERATED_VERSION}'
         + f' or downgrade your generated code using grpcio-tools<={GRPC_VERSION}.'
@@ -38,31 +38,31 @@ class GlossaryStub(object):
         self.ListTerms = channel.unary_unary(
                 '/glossary.Glossary/ListTerms',
                 request_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-                response_deserializer=glossary__pb2.TermList.FromString,
+                response_deserializer=proto_dot_glossary__pb2.TermList.FromString,
                 _registered_method=True)
         self.GetTermByKeyword = channel.unary_unary(
                 '/glossary.Glossary/GetTermByKeyword',
-                request_serializer=glossary__pb2.GetByKeywordRequest.SerializeToString,
-                response_deserializer=glossary__pb2.Term.FromString,
+                request_serializer=proto_dot_glossary__pb2.GetByKeywordRequest.SerializeToString,
+                response_deserializer=proto_dot_glossary__pb2.Term.FromString,
                 _registered_method=True)
         self.GetTermById = channel.unary_unary(
                 '/glossary.Glossary/GetTermById',
-                request_serializer=glossary__pb2.GetByIdRequest.SerializeToString,
-                response_deserializer=glossary__pb2.Term.FromString,
+                request_serializer=proto_dot_glossary__pb2.GetByIdRequest.SerializeToString,
+                response_deserializer=proto_dot_glossary__pb2.Term.FromString,
                 _registered_method=True)
         self.CreateTerm = channel.unary_unary(
                 '/glossary.Glossary/CreateTerm',
-                request_serializer=glossary__pb2.CreateTermRequest.SerializeToString,
-                response_deserializer=glossary__pb2.Term.FromString,
+                request_serializer=proto_dot_glossary__pb2.CreateTermRequest.SerializeToString,
+                response_deserializer=proto_dot_glossary__pb2.Term.FromString,
                 _registered_method=True)
         self.UpdateTerm = channel.unary_unary(
                 '/glossary.Glossary/UpdateTerm',
-                request_serializer=glossary__pb2.UpdateTermRequest.SerializeToString,
-                response_deserializer=glossary__pb2.Term.FromString,
+                request_serializer=proto_dot_glossary__pb2.UpdateTermRequest.SerializeToString,
+                response_deserializer=proto_dot_glossary__pb2.Term.FromString,
                 _registered_method=True)
         self.DeleteTerm = channel.unary_unary(
                 '/glossary.Glossary/DeleteTerm',
-                request_serializer=glossary__pb2.DeleteTermRequest.SerializeToString,
+                request_serializer=proto_dot_glossary__pb2.DeleteTermRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 _registered_method=True)
 
@@ -112,31 +112,31 @@ def add_GlossaryServicer_to_server(servicer, server):
             'ListTerms': grpc.unary_unary_rpc_method_handler(
                     servicer.ListTerms,
                     request_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                    response_serializer=glossary__pb2.TermList.SerializeToString,
+                    response_serializer=proto_dot_glossary__pb2.TermList.SerializeToString,
             ),
             'GetTermByKeyword': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTermByKeyword,
-                    request_deserializer=glossary__pb2.GetByKeywordRequest.FromString,
-                    response_serializer=glossary__pb2.Term.SerializeToString,
+                    request_deserializer=proto_dot_glossary__pb2.GetByKeywordRequest.FromString,
+                    response_serializer=proto_dot_glossary__pb2.Term.SerializeToString,
             ),
             'GetTermById': grpc.unary_unary_rpc_method_handler(
                     servicer.GetTermById,
-                    request_deserializer=glossary__pb2.GetByIdRequest.FromString,
-                    response_serializer=glossary__pb2.Term.SerializeToString,
+                    request_deserializer=proto_dot_glossary__pb2.GetByIdRequest.FromString,
+                    response_serializer=proto_dot_glossary__pb2.Term.SerializeToString,
             ),
             'CreateTerm': grpc.unary_unary_rpc_method_handler(
                     servicer.CreateTerm,
-                    request_deserializer=glossary__pb2.CreateTermRequest.FromString,
-                    response_serializer=glossary__pb2.Term.SerializeToString,
+                    request_deserializer=proto_dot_glossary__pb2.CreateTermRequest.FromString,
+                    response_serializer=proto_dot_glossary__pb2.Term.SerializeToString,
             ),
             'UpdateTerm': grpc.unary_unary_rpc_method_handler(
                     servicer.UpdateTerm,
-                    request_deserializer=glossary__pb2.UpdateTermRequest.FromString,
-                    response_serializer=glossary__pb2.Term.SerializeToString,
+                    request_deserializer=proto_dot_glossary__pb2.UpdateTermRequest.FromString,
+                    response_serializer=proto_dot_glossary__pb2.Term.SerializeToString,
             ),
             'DeleteTerm': grpc.unary_unary_rpc_method_handler(
                     servicer.DeleteTerm,
-                    request_deserializer=glossary__pb2.DeleteTermRequest.FromString,
+                    request_deserializer=proto_dot_glossary__pb2.DeleteTermRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
     }
@@ -166,7 +166,7 @@ class Glossary(object):
             target,
             '/glossary.Glossary/ListTerms',
             google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            glossary__pb2.TermList.FromString,
+            proto_dot_glossary__pb2.TermList.FromString,
             options,
             channel_credentials,
             insecure,
@@ -192,8 +192,8 @@ class Glossary(object):
             request,
             target,
             '/glossary.Glossary/GetTermByKeyword',
-            glossary__pb2.GetByKeywordRequest.SerializeToString,
-            glossary__pb2.Term.FromString,
+            proto_dot_glossary__pb2.GetByKeywordRequest.SerializeToString,
+            proto_dot_glossary__pb2.Term.FromString,
             options,
             channel_credentials,
             insecure,
@@ -219,8 +219,8 @@ class Glossary(object):
             request,
             target,
             '/glossary.Glossary/GetTermById',
-            glossary__pb2.GetByIdRequest.SerializeToString,
-            glossary__pb2.Term.FromString,
+            proto_dot_glossary__pb2.GetByIdRequest.SerializeToString,
+            proto_dot_glossary__pb2.Term.FromString,
             options,
             channel_credentials,
             insecure,
@@ -246,8 +246,8 @@ class Glossary(object):
             request,
             target,
             '/glossary.Glossary/CreateTerm',
-            glossary__pb2.CreateTermRequest.SerializeToString,
-            glossary__pb2.Term.FromString,
+            proto_dot_glossary__pb2.CreateTermRequest.SerializeToString,
+            proto_dot_glossary__pb2.Term.FromString,
             options,
             channel_credentials,
             insecure,
@@ -273,8 +273,8 @@ class Glossary(object):
             request,
             target,
             '/glossary.Glossary/UpdateTerm',
-            glossary__pb2.UpdateTermRequest.SerializeToString,
-            glossary__pb2.Term.FromString,
+            proto_dot_glossary__pb2.UpdateTermRequest.SerializeToString,
+            proto_dot_glossary__pb2.Term.FromString,
             options,
             channel_credentials,
             insecure,
@@ -300,7 +300,7 @@ class Glossary(object):
             request,
             target,
             '/glossary.Glossary/DeleteTerm',
-            glossary__pb2.DeleteTermRequest.SerializeToString,
+            proto_dot_glossary__pb2.DeleteTermRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options,
             channel_credentials,
